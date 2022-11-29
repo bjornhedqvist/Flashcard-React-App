@@ -8,7 +8,7 @@ export default function Study({ decks }) {
 
   const [deck, setDeck] = useState([]);
   const [cardSet, setCardSet] = useState([]);
-  const [flipped, setFlipped] = useState(true);
+  const [flippedToFront, setFlippedToFront] = useState(true);
   let [cardNumber, setCardNumber] = useState(0);
 
   useEffect(() => {
@@ -28,7 +28,7 @@ export default function Study({ decks }) {
 
   function nextButtonClickHandler (){
       setCardNumber(cardNumber+1);
-      setFlipped(!flipped);
+      setFlippedToFront(!flippedToFront);
   };
 
   return cardSet.length >= 3 ? (
@@ -53,7 +53,7 @@ export default function Study({ decks }) {
       </div>
 
       <div>
-        {!flipped ? (
+        {!flippedToFront ? (
           <div className="card ml-5 mr-5 ">
             <div className="card-body">
               <h5 className="card-title">
@@ -61,7 +61,7 @@ export default function Study({ decks }) {
               </h5>
               <p className="card-text">{deck.cards[cardNumber].back}</p>
               <button
-                onClick={() => setFlipped(!flipped)}
+                onClick={() => setFlippedToFront(!flippedToFront)}
                 className="btn btn-secondary mr-1"
               >
                 Flip
@@ -82,7 +82,7 @@ export default function Study({ decks }) {
               </h5>
               <p className="card-text">{deck.cards[cardNumber].front}</p>
               <button
-                onClick={() => setFlipped(!flipped)}
+                onClick={() => setFlippedToFront(!flippedToFront)}
                 className="btn btn-secondary"
               >
                 Flip
