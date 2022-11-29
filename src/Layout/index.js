@@ -5,6 +5,7 @@ import Header from "./Header";
 import NotFound from "./NotFound";
 import { listDecks } from "../utils/api";
 import Home from "./Home";
+import Study from "./Study"
 
 function Layout() {
   //state declarations
@@ -28,7 +29,7 @@ function Layout() {
     if (
       window.confirm("Delete this deck? \n You will not be able to recover it")
     ) {
-      setDecks(decks.filter((deck) => deck.name !== deckContent))
+      setDecks(decks.filter((deck) => deck.name !== deckContent));
     }
   };
 
@@ -40,6 +41,17 @@ function Layout() {
         <Route exact path={"/"}>
           <Home decks={decks} deleteButtonHandler={deleteButtonHandler} />
         </Route>
+
+        <Route path={"/decks/new"}>
+
+        </Route>
+        <Route exact path={"/decks/:deckId"}>
+
+        </Route>
+        <Route path={"/decks/:deckId/study"}>
+          <Study decks={decks}/>
+        </Route>
+
         <Route>
           <NotFound />
         </Route>

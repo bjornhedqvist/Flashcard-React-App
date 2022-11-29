@@ -14,14 +14,26 @@ export default function ListDeck({ deleteButtonHandler, decks }) {
               {deck.cards.length} cards
             </small>
           </h5>
-          <p key="deck-description-text" className="card-text"> {deck.description}</p>
+          <p key="deck-description-text" className="card-text">
+            {deck.description}
+          </p>
           <div key="deck-action-buttons" className="d-flex align-items-center">
-            <NavLink to={""} key="view-button" role="button" className="btn btn-secondary mr-2">
-            <span className="oi oi-eye mr-1"></span>
+            <NavLink
+              to={""}
+              key="view-button"
+              role="button"
+              className="btn btn-secondary mr-2"
+            >
+              <span className="oi oi-eye mr-1"></span>
               View
             </NavLink>
-            <NavLink to={""} key="study-button" role="button" className="btn btn-primary mr-5">
-            <span className="oi oi-book mr-1"></span>
+            <NavLink
+              to={`/decks/${deck.id}/study`}
+              key="study-button"
+              role="button"
+              className="btn btn-primary mr-5"
+            >
+              <span className="oi oi-book mr-1"></span>
               Study
             </NavLink>
             <button
@@ -38,6 +50,5 @@ export default function ListDeck({ deleteButtonHandler, decks }) {
   });
 }
 
-
 // <span className="oi oi-pencil"></span>
-// <span className="oi oi-home"></span>
+
