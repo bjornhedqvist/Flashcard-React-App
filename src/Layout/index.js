@@ -27,7 +27,7 @@ function Layout() {
   //for use when user clicks on the delete button in <Home /> -> <ListDeck />
   const deleteButtonHandler = (deckContent) => {
     if (
-      window.confirm("Delete this deck? \n You will not be able to recover it")
+      window.confirm("Delete this deck? \n \n You will not be able to recover it")
     ) {
       setDecks(decks.filter((deck) => deck.name !== deckContent));
     }

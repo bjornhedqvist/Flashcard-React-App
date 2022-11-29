@@ -1,10 +1,11 @@
 import React from "react";
 import { useState, useEffect } from "react";
-import { useParams, NavLink } from "react-router-dom";
+import { useParams, NavLink, useHistory } from "react-router-dom";
 import { readDeck } from "../utils/api";
 
-export default function Study({ decks }) {
+export default function Study({ decks }) {    
   const { deckId } = useParams();
+  const history = useHistory()
 
   const [deck, setDeck] = useState([]);
   const [cardSet, setCardSet] = useState([]);
@@ -24,11 +25,17 @@ export default function Study({ decks }) {
     loadThisDeck();
   }, [deckId]);
 
-  //   cardSet.forEach((card, cardIndex) => )
-
   function nextButtonClickHandler (){
-      setCardNumber(cardNumber+1);
-      setFlippedToFront(!flippedToFront);
+      if ((cardNumber+1) === cardSet.length){
+        if(window.confirm('Restart cards? \n \n Click "Cancel" to return to the home page')){
+            setCardNumber(0)
+        }else{
+            history.push("/")
+        }
+      }else{
+        setCardNumber(cardNumber+1);
+        setFlippedToFront(!flippedToFront);
+      }
   };
 
   return cardSet.length >= 3 ? (
