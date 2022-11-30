@@ -22,13 +22,6 @@ function Layout() {
   const [createDeckFormData, setCreateDeckFormData] = useState({
     ...initialCreateDeckFormState,
   });
-  const initialEditDeckFormState = {
-    name: "",
-    description: "",
-  };
-  const [editDeckFormData, setEditDeckFormData] = useState({
-    ...initialEditDeckFormState,
-  });
 
   //this uses an api call in utils to retreive all decks and sets the decks variable for use in <Home /> and its child component <ListDeck />
   useEffect(() => {
@@ -76,17 +69,7 @@ function Layout() {
   };
 
   //handles input and submission and cancel of the Edit Deck form
-  const handleEditDeckInputChange = ({ target }) => {
-    setEditDeckFormData({
-      ...editDeckFormData,
-      [target.name]: target.value,
-    });
-  };
-
-  const cancelEditDeckHandler = (event) => {
-    history.push("/");
-  };
-
+ 
   //Return the layout of the app, with child components and route paths defined
   return (
     <>
@@ -114,7 +97,7 @@ function Layout() {
           <Study />
         </Route>
         <Route exact path="/decks/:deckId/edit">
-          <EditDeck cancelEditDeckHandler={cancelEditDeckHandler} handleEditDeckInputChange={handleEditDeckInputChange} editDeckFormData={editDeckFormData} setEditDeckFormData={setEditDeckFormData} initialEditDeckFormState={initialEditDeckFormState}/>
+          <EditDeck />
         </Route>
         <Route>
           <NotFound />

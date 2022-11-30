@@ -1,19 +1,27 @@
 import React from "react";
 import { useState, useEffect } from "react";
-import { Route, Switch, useHistory, NavLink, useParams } from "react-router-dom";
+import {
+  Route,
+  Switch,
+  useHistory,
+  NavLink,
+  useParams,
+} from "react-router-dom";
 import { readDeck, updateDeck } from "../utils/api";
 
-export default function EditDeck({
-  cancelEditDeckHandler,
-  handleEditDeckInputChange,
-  editDeckFormData,
-  setEditDeckFormData,
-  initialEditDeckFormState
-}) {
+export default function EditDeck() {
   const { deckId } = useParams();
   const [deck, setDeck] = useState({});
   const [cardSet, setCardSet] = useState([]);
-  const history = useHistory()
+  const history = useHistory();
+  const [updatedDeck, setUpdatedDeck] = useState({});
+  const initialEditDeckFormState = {
+    name: "",
+    description: "",
+  };
+  const [editDeckFormData, setEditDeckFormData] = useState({
+    ...initialEditDeckFormState,
+  });
 
   useEffect(() => {
     async function loadThisDeck() {
@@ -23,9 +31,10 @@ export default function EditDeck({
         setCardSet(thisDeck.cards);
         //modify initialEditDeckFormState
         setEditDeckFormData({
-            name: `${thisDeck.name}`,
-            description: `${thisDeck.description}`
-        })
+          name: `${thisDeck.name}`,
+          description: `${thisDeck.description}`,
+          id: `${thisDeck.id}`,
+        });
       } catch (error) {
         throw error;
       }
@@ -33,10 +42,20 @@ export default function EditDeck({
     loadThisDeck();
   }, [deckId, setEditDeckFormData]);
 
-  
+  const handleEditDeckInputChange = ({ target }) => {
+    setEditDeckFormData({
+      ...editDeckFormData,
+      [target.name]: target.value,
+    });
+  };
+
+  const cancelEditDeckHandler = (event) => {
+    history.push("/");
+  };
+
   const submitEditDeckFormHandler = async (event) => {
-      event.preventDefault();
-    await updateDeck(deck);
+    event.preventDefault();
+    await updateDeck(editDeckFormData);
     setEditDeckFormData({ ...initialEditDeckFormState });
     history.push(`/decks/${deckId}`);
   };
