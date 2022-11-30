@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import { useParams, NavLink, useHistory } from "react-router-dom";
 import { readDeck } from "../utils/api";
 
-export default function Study({ decks }) {
+export default function Study() {
   const { deckId } = useParams();
   const history = useHistory();
 

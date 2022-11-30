@@ -2,7 +2,7 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 import ListDeck from "./ListDeck";
 
-export default function Home({ decks, deleteButtonHandler }) {
+export default function Home({ decks, deleteDeckButtonHandler }) {
 
   //returns create deck button and a list of deck cards component
   return (
@@ -11,7 +11,7 @@ export default function Home({ decks, deleteButtonHandler }) {
       <span className="oi oi-plus mr-1"></span>
         Create Deck
       </NavLink>
-      <ListDeck decks={decks} deleteButtonHandler={deleteButtonHandler}/>
+      <ListDeck decks={decks} deleteDeckButtonHandler={deleteDeckButtonHandler}/>
     </div>
   );
 }

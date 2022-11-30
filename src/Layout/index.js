@@ -7,6 +7,7 @@ import { listDecks, createDeck, deleteDeck } from "../utils/api";
 import Home from "./Home";
 import Study from "./Study";
 import CreateDeck from "./CreateDeck";
+import ViewDeck from "./ViewDeck"
 
 function Layout() {
   //state declarations
@@ -32,7 +33,7 @@ function Layout() {
   }, [setDecks]);
 
   //for use when user clicks on the delete button in <Home /> -> <ListDeck />
-  const deleteButtonHandler = (deckContent) => {
+  const deleteDeckButtonHandler = (deckContent) => {
     if (
       window.confirm(
         "Delete this deck? \n \n You will not be able to recover it"
@@ -64,24 +65,23 @@ function Layout() {
   }
 
     //Return the layout of the app, with child components and route paths defined
-
   return (
     <>
       <Header />
       {/* TODO: Implement the screen starting here */}
       <Switch>
         <Route exact path={"/"}>
-          <Home decks={decks} deleteButtonHandler={deleteButtonHandler} />
+          <Home decks={decks} deleteDeckButtonHandler={deleteDeckButtonHandler} />
         </Route>
 
         <Route path={"/decks/new"}>
           <CreateDeck handleCreateDeckInputChange={handleCreateDeckInputChange} submitCreateDeckFormHandler={submitCreateDeckFormHandler} cancelCreateDeckHandler={cancelCreateDeckHandler} createDeckFormData={createDeckFormData} />
         </Route>
         <Route exact path={"/decks/:deckId"}>
-
+          <ViewDeck deleteDeckButtonHandler={deleteDeckButtonHandler}/> 
         </Route>
         <Route path={"/decks/:deckId/study"}>
-          <Study decks={decks} />
+          <Study />
         </Route>
 
         <Route>

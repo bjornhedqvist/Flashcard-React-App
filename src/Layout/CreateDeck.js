@@ -1,6 +1,5 @@
 import React from "react";
-import { useState, useEffect } from "react";
-import { Route, Switch, NavLink } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 export default function CreateDeck({ handleCreateDeckInputChange, submitCreateDeckFormHandler, cancelCreateDeckHandler, createDeckFormData }) {
   return (

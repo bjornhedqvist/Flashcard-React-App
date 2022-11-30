@@ -1,7 +1,7 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 
-export default function ListDeck({ deleteButtonHandler, decks }) {
+export default function ListDeck({ deleteDeckButtonHandler, decks }) {
   //maps a card with buttons for each deck from the array passed in as a prop
   return decks.map((deck, i) => {
     return (
@@ -18,7 +18,7 @@ export default function ListDeck({ deleteButtonHandler, decks }) {
           </p>
           <div key="deck-action-buttons" className="d-flex align-items-center">
             <NavLink
-              to={""}
+              to={`/decks/${deck.id}`}
               key="view-button"
               role="button"
               className="btn btn-secondary mr-2"
@@ -38,7 +38,7 @@ export default function ListDeck({ deleteButtonHandler, decks }) {
             <NavLink
               to={`/`}
               key="delete-button"
-              onClick={() => deleteButtonHandler(deck.id)}
+              onClick={() => deleteDeckButtonHandler(deck.id)}
               className="btn btn-danger ml-auto"
             >
               <span className="oi oi-trash"></span>
@@ -49,5 +49,3 @@ export default function ListDeck({ deleteButtonHandler, decks }) {
     );
   });
 }
-
-// <span className="oi oi-pencil"></span>
