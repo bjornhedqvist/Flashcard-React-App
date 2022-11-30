@@ -1,23 +1,34 @@
 import React from "react";
 import { useState, useEffect } from "react";
-import { Route, Switch, useHistory } from "react-router-dom";
+import { Route, Switch, useHistory, useParams, useRouteMatch } from "react-router-dom";
 import Header from "./Header";
 import NotFound from "./NotFound";
-import { listDecks, createDeck, deleteDeck } from "../utils/api";
+import { listDecks, createDeck, deleteDeck} from "../utils/api";
 import Home from "./Home";
 import Study from "./Study";
 import CreateDeck from "./CreateDeck";
-import ViewDeck from "./ViewDeck"
+import ViewDeck from "./ViewDeck";
+import EditDeck from "./EditDeck"
 
 function Layout() {
   //state declarations
+  const matchY = useRouteMatch()
   const [decks, setDecks] = useState([]);
   const history = useHistory();
   const initialCreateDeckFormState = {
     name: "",
     description: "",
   };
-  const [createDeckFormData, setCreateDeckFormData] = useState({ ...initialCreateDeckFormState }); 
+  const [createDeckFormData, setCreateDeckFormData] = useState({
+    ...initialCreateDeckFormState,
+  });
+  const initialEditDeckFormState = {
+    name: "",
+    description: "",
+  };
+  const [editDeckFormData, setEditDeckFormData] = useState({
+    ...initialEditDeckFormState,
+  });
 
   //this uses an api call in utils to retreive all decks and sets the decks variable for use in <Home /> and its child component <ListDeck />
   useEffect(() => {
@@ -33,57 +44,78 @@ function Layout() {
   }, [setDecks]);
 
   //for use when user clicks on the delete button in <Home /> -> <ListDeck />
-  const deleteDeckButtonHandler = (deckContent) => {
+  const deleteDeckButtonHandler = async (deckContent) => {
     if (
       window.confirm(
         "Delete this deck? \n \n You will not be able to recover it"
       )
     ) {
-      deleteDeck(deckContent)
-      const newDecks = decks.filter((deck) => deck.id !== deckContent)
-      setDecks(newDecks)
+      await deleteDeck(deckContent);
+      // DONT DO THIS PEEPS: const newDecks = decks.filter((deck) => deck.id !== deckContent);  DO WHATS BELOW and add async await above
+      listDecks().then(setDecks);
     }
   };
 
-//handles input and submission and cancel of the Create Deck form
-    const handleCreateDeckInputChange = ({ target }) => {
-      setCreateDeckFormData({
-        ...createDeckFormData,
-        [target.name]: target.value,
-      });
-    };
-  
-    const submitCreateDeckFormHandler = (event) => {
-      event.preventDefault();
-      createDeck(createDeckFormData)
-      setCreateDeckFormData({ ...initialCreateDeckFormState });
-      history.push("/deck/:deckId")
-    };
-    
-    const cancelCreateDeckHandler = (event) => {
-    history.push("/")
-  }
+  //handles input and submission and cancel of the Create Deck form
+  const handleCreateDeckInputChange = ({ target }) => {
+    setCreateDeckFormData({
+      ...createDeckFormData,
+      [target.name]: target.value,
+    });
+  };
 
-    //Return the layout of the app, with child components and route paths defined
+  const submitCreateDeckFormHandler = async (event) => {
+    event.preventDefault();
+    const createdDeck = await createDeck(createDeckFormData);
+    setCreateDeckFormData({ ...initialCreateDeckFormState });
+    history.push(`/decks/${createdDeck.id}`);
+  };
+
+  const cancelCreateDeckHandler = (event) => {
+    history.push("/");
+  };
+
+  //handles input and submission and cancel of the Edit Deck form
+  const handleEditDeckInputChange = ({ target }) => {
+    setEditDeckFormData({
+      ...editDeckFormData,
+      [target.name]: target.value,
+    });
+  };
+
+  const cancelEditDeckHandler = (event) => {
+    history.push("/");
+  };
+
+  //Return the layout of the app, with child components and route paths defined
   return (
     <>
       <Header />
       {/* TODO: Implement the screen starting here */}
       <Switch>
-        <Route exact path={"/"}>
-          <Home decks={decks} deleteDeckButtonHandler={deleteDeckButtonHandler} />
+        <Route exact path="/">
+          <Home
+            decks={decks}
+            deleteDeckButtonHandler={deleteDeckButtonHandler}
+          />
         </Route>
-
-        <Route path={"/decks/new"}>
-          <CreateDeck handleCreateDeckInputChange={handleCreateDeckInputChange} submitCreateDeckFormHandler={submitCreateDeckFormHandler} cancelCreateDeckHandler={cancelCreateDeckHandler} createDeckFormData={createDeckFormData} />
+        <Route exact path="/decks/new">
+          <CreateDeck
+            handleCreateDeckInputChange={handleCreateDeckInputChange}
+            submitCreateDeckFormHandler={submitCreateDeckFormHandler}
+            cancelCreateDeckHandler={cancelCreateDeckHandler}
+            createDeckFormData={createDeckFormData}
+          />
         </Route>
-        <Route exact path={"/decks/:deckId"}>
-          <ViewDeck deleteDeckButtonHandler={deleteDeckButtonHandler}/> 
+        <Route exact path="/decks/:deckId">
+          <ViewDeck deleteDeckButtonHandler={deleteDeckButtonHandler} />
         </Route>
-        <Route path={"/decks/:deckId/study"}>
+        <Route exact path="/decks/:deckId/study">
           <Study />
         </Route>
-
+        <Route exact path="/decks/:deckId/edit">
+          <EditDeck cancelEditDeckHandler={cancelEditDeckHandler} handleEditDeckInputChange={handleEditDeckInputChange} editDeckFormData={editDeckFormData} setEditDeckFormData={setEditDeckFormData} initialEditDeckFormState={initialEditDeckFormState}/>
+        </Route>
         <Route>
           <NotFound />
         </Route>
