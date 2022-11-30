@@ -124,12 +124,12 @@ export default function Study({ decks }) {
       <h2 className="text-left ml-5">Study: {deck.name}</h2>
       <h4 className="text-left ml-5">Not enough cards.</h4>
       <p className="text-left ml-5">
-        You need at least 3 cartds to study. There are {cardSet.length} cards in
+        You need at least 3 cards to study. There are {cardSet.length} cards in
         this deck.
       </p>
       <NavLink to={"/cards/new"} role="button" className="btn btn-primary ml-5">
         <span className="oi oi-plus mr-1"></span>
-        Create Deck
+        Add Cards
       </NavLink>
     </div>
   );

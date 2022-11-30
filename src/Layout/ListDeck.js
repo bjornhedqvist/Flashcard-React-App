@@ -2,11 +2,10 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 
 export default function ListDeck({ deleteButtonHandler, decks }) {
-
   //maps a card with buttons for each deck from the array passed in as a prop
-  return decks.map((deck) => {
+  return decks.map((deck, i) => {
     return (
-      <div key={`home-div-${deck.name}`} className="card mt-3">
+      <div key={`home-div-${[i]}`} className="card mt-3">
         <div key="home-sub" className="card-body">
           <h5 key="deck-title" className="card-title d-flex align-items-center">
             {deck.name}
@@ -36,13 +35,14 @@ export default function ListDeck({ deleteButtonHandler, decks }) {
               <span className="oi oi-book mr-1"></span>
               Study
             </NavLink>
-            <button
+            <NavLink
+              to={`/`}
               key="delete-button"
-              onClick={() => deleteButtonHandler(deck.name)}
+              onClick={() => deleteButtonHandler(deck.id)}
               className="btn btn-danger ml-auto"
             >
               <span className="oi oi-trash"></span>
-            </button>
+            </NavLink>
           </div>
         </div>
       </div>
@@ -51,4 +51,3 @@ export default function ListDeck({ deleteButtonHandler, decks }) {
 }
 
 // <span className="oi oi-pencil"></span>
-
