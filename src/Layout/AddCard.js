@@ -1,10 +1,7 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import {
-  Route,
-  Switch,
   useHistory,
-  useParams,
   useRouteMatch,
   NavLink,
 } from "react-router-dom";
@@ -13,9 +10,7 @@ import CardFormComponent from "./CardFormComponent";
 
 export default function AddCard() {
   const { params } = useRouteMatch();
-  console.log(params);
   const [deck, setDeck] = useState({});
-  const [cardSet, setCardSet] = useState([]);
   const history = useHistory();
 
   const initialCreateCardFormState = {
@@ -31,7 +26,6 @@ export default function AddCard() {
       try {
         const thisDeck = await readDeck(params.deckId);
         setDeck(thisDeck);
-        setCardSet(thisDeck.cards);
       } catch (error) {
         throw error;
       }

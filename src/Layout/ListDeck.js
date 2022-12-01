@@ -6,20 +6,19 @@ export default function ListDeck({ deleteDeckButtonHandler, decks }) {
   return decks.map((deck, i) => {
     return (
       <div key={`home-div-${[i]}`} className="card mt-3">
-        <div key="home-sub" className="card-body">
-          <h5 key="deck-title" className="card-title d-flex align-items-center">
+        <div className="card-body">
+          <h5 className="card-title d-flex align-items-center">
             {deck.name}
-            <small key="cards-length-text" className="text-muted ml-auto">
+            <small className="text-muted ml-auto">
               {deck.cards.length} cards
             </small>
           </h5>
-          <p key="deck-description-text" className="card-text">
+          <p className="card-text">
             {deck.description}
           </p>
-          <div key="deck-action-buttons" className="d-flex align-items-center">
+          <div className="d-flex align-items-center">
             <NavLink
               to={`/decks/${deck.id}`}
-              key="view-button"
               role="button"
               className="btn btn-secondary mr-2"
             >
@@ -28,7 +27,6 @@ export default function ListDeck({ deleteDeckButtonHandler, decks }) {
             </NavLink>
             <NavLink
               to={`/decks/${deck.id}/study`}
-              key="study-button"
               role="button"
               className="btn btn-primary mr-5"
             >
@@ -37,7 +35,6 @@ export default function ListDeck({ deleteDeckButtonHandler, decks }) {
             </NavLink>
             <NavLink
               to={`/`}
-              key="delete-button"
               onClick={() => deleteDeckButtonHandler(deck.id)}
               className="btn btn-danger ml-auto"
             >

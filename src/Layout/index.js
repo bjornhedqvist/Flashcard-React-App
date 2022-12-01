@@ -4,8 +4,6 @@ import {
   Route,
   Switch,
   useHistory,
-  useParams,
-  useRouteMatch,
 } from "react-router-dom";
 import Header from "./Header";
 import NotFound from "./NotFound";
@@ -20,7 +18,6 @@ import AddCard from "./AddCard";
 
 function Layout() {
   //state declarations
-  const matchY = useRouteMatch();
   const [decks, setDecks] = useState([]);
   const history = useHistory();
   const initialCreateDeckFormState = {

@@ -1,24 +1,16 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import {
-  Route,
-  Switch,
   useHistory,
   useParams,
-  useRouteMatch,
   NavLink,
 } from "react-router-dom";
-import { readCard, updateCard, readDeck } from "../utils/api";
+import { readCard, updateCard } from "../utils/api";
 import CardFormComponent from "./CardFormComponent";
 
 export default function EditCard() {
   const { cardId, deckId } = useParams();
-  console.log("******************" + cardId);
-  const [deck, setDeck] = useState({});
-  const [cardSet, setCardSet] = useState([]);
   const history = useHistory();
-  const [updatedDeck, setUpdatedDeck] = useState({});
-  const [card, setCard] = useState({});
   const initialEditCardFormState = {
     front: "",
     back: "",
@@ -28,28 +20,9 @@ export default function EditCard() {
   });
 
   useEffect(() => {
-    async function loadThisDeck() {
-      try {
-        const thisDeck = await readDeck(deckId);
-        setDeck(thisDeck);
-        setCardSet(thisDeck.cards);
-        //   setEditDeckFormData({
-        //     name: `${thisDeck.name}`,
-        //     description: `${thisDeck.description}`,
-        //     id: `${thisDeck.id}`,
-        //   });
-      } catch (error) {
-        throw error;
-      }
-    }
-    loadThisDeck();
-  }, [deckId /*, setEditDeckFormData*/]);
-
-  useEffect(() => {
     async function loadThisCard() {
       try {
         const thisCard = await readCard(cardId);
-        setCard(thisCard);
         setEditCardFormData({
           front: `${thisCard.front}`,
           back: `${thisCard.back}`,

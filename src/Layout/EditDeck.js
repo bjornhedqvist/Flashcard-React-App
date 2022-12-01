@@ -1,8 +1,6 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import {
-  Route,
-  Switch,
   useHistory,
   NavLink,
   useParams,
@@ -12,9 +10,7 @@ import { readDeck, updateDeck } from "../utils/api";
 export default function EditDeck() {
   const { deckId } = useParams();
   const [deck, setDeck] = useState({});
-  const [cardSet, setCardSet] = useState([]);
   const history = useHistory();
-  const [updatedDeck, setUpdatedDeck] = useState({});
   const initialEditDeckFormState = {
     name: "",
     description: "",
@@ -28,8 +24,6 @@ export default function EditDeck() {
       try {
         const thisDeck = await readDeck(deckId);
         setDeck(thisDeck);
-        setCardSet(thisDeck.cards);
-        //modify initialEditDeckFormState
         setEditDeckFormData({
           name: `${thisDeck.name}`,
           description: `${thisDeck.description}`,
