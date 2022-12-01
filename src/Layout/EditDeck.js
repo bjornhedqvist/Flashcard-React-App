@@ -50,7 +50,7 @@ export default function EditDeck() {
   };
 
   const cancelEditDeckHandler = (event) => {
-    history.push("/");
+    history.push(`/decks/${deckId}`);
   };
 
   const submitEditDeckFormHandler = async (event) => {

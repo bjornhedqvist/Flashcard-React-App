@@ -114,7 +114,7 @@ export default function Study() {
             </NavLink>
           </li>
           <li className="breadcrumb-item">
-            <NavLink to={"/decks/deckId"}>{deck.name}</NavLink>
+          <NavLink to={`/decks/${deck.id}`}>{deck.name}</NavLink>
           </li>
           <li className="breadcrumb-item active" aria-current="page">
             Study
