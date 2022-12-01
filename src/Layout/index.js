@@ -46,6 +46,7 @@ function Layout() {
       await deleteDeck(deckContent);
       // DONT DO THIS PEEPS: const newDecks = decks.filter((deck) => deck.id !== deckContent);  DO WHATS BELOW and add async await above
       listDecks().then(setDecks);
+      history.push(`/`)
     }
   };
 

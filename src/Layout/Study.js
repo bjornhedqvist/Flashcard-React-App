@@ -33,6 +33,7 @@ export default function Study() {
         )
       ) {
         setCardNumber(0);
+        setFlippedToFront(!flippedToFront)
       } else {
         history.push("/");
       }
