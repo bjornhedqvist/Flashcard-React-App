@@ -5,11 +5,12 @@ import {
   useParams,
   NavLink,
 } from "react-router-dom";
-import { readCard, updateCard } from "../utils/api";
+import { readCard, updateCard, readDeck } from "../utils/api";
 import CardFormComponent from "./CardFormComponent";
 
 export default function EditCard() {
   const { cardId, deckId } = useParams();
+  const [deck, setDeck] = useState({});
   const history = useHistory();
   const initialEditCardFormState = {
     front: "",
@@ -18,6 +19,18 @@ export default function EditCard() {
   const [editCardFormData, setEditCardFormData] = useState({
     ...initialEditCardFormState,
   });
+
+  useEffect(() => {
+    async function loadThisDeck() {
+      try {
+        const thisDeck = await readDeck(deckId);
+        setDeck(thisDeck);
+      } catch (error) {
+        throw error;
+      }
+    }
+    loadThisDeck();
+  }, [deckId]);
 
   useEffect(() => {
     async function loadThisCard() {
@@ -64,14 +77,14 @@ export default function EditCard() {
             </NavLink>
           </li>
           <li className="breadcrumb-item">
-            <NavLink to={`/decks/deck.id`}>deck.name</NavLink>
+            <NavLink to={`/decks/deck.id`}>{deck.name}</NavLink>
           </li>
           <li className="breadcrumb-item active" aria-current="page">
-            Edit Card
+            Edit Card {cardId}
           </li>
         </ol>
       </nav>
-      <h2 className="text-left ml-5">Create Card</h2>
+      <h2 className="text-left ml-5">Edit Card</h2>
       <CardFormComponent
         submitCardFormHandler={submitEditCardFormHandler}
         handleCardInputChange={handleEditCardInputChange}

@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import {
   Route,
   Switch,
-  useHistory,
+  useHistory
 } from "react-router-dom";
 import Header from "./Header";
 import NotFound from "./NotFound";

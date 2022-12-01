@@ -6,11 +6,11 @@ export default function CardFormComponent({submitCardFormHandler, handleCardInpu
         <form onSubmit={submitCardFormHandler} className="ml-5 mr-5">
         <div className="form-group mt-2">
           <label htmlFor="front">Front</label>
-          <input
-            type="text"
+          <textarea
             className="form-control"
             id="front"
             name="front"
+            rows="3"
             placeholder="Front side of card"
             onChange={handleCardInputChange}
             value={cardFormData.front}
@@ -22,7 +22,7 @@ export default function CardFormComponent({submitCardFormHandler, handleCardInpu
             className="form-control"
             id="back"
             name="back"
-            rows="4"
+            rows="3"
             placeholder="Back side of card"
             onChange={handleCardInputChange}
             value={cardFormData.back}

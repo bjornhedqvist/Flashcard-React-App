@@ -64,11 +64,11 @@ export default function AddCard() {
             <NavLink to={`/decks/${deck.id}`}>{deck.name}</NavLink>
           </li>
           <li className="breadcrumb-item active" aria-current="page">
-            Create Card
+            Add Card
           </li>
         </ol>
       </nav>
-      <h2 className="text-left ml-5">Create Card</h2>
+      <h2 className="text-left ml-5">{deck.name}: Add Card</h2>
       <CardFormComponent submitCardFormHandler={submitCreateCardFormHandler} handleCardInputChange={handleCreateCardInputChange} cardFormData={createCardFormData} cancelCardHandler={cancelCreateCardHandler}/>
     </div>
   );
