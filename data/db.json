@@ -16,11 +16,6 @@
       "id": 3
     },
     {
-      "name": "quatro",
-      "description": "4444444444",
-      "id": 4
-    },
-    {
       "name": "brian + jalon",
       "description": "baaaa baaa",
       "id": 6
@@ -77,11 +72,15 @@
       "id": 4
     },
     {
-      "cards": [],
-      "front": "b",
-      "back": "b",
-      "deckId": 1,
+      "front": "pumpkin",
+      "back": "spice",
       "id": 7
+    },
+    {
+      "front": "peppermint",
+      "back": "bark",
+      "id": 10,
+      "deckId": "1"
     }
   ]
 }

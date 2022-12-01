@@ -95,7 +95,7 @@ export default function ViewDeck({
           </div>
         </div>
         <h4 className="ml-5 mr-5">Cards</h4>
-        <ListCards deck={deck} cardSet={cardSet}/>
+        <ListCards deck={deck} cardSet={cardSet} setCardSet={setCardSet}/>
       </div>
     );
 }
