@@ -33,7 +33,7 @@ export default function Study() {
         )
       ) {
         setCardNumber(0);
-        setFlippedToFront(!flippedToFront)
+        setFlippedToFront(!flippedToFront);
       } else {
         history.push("/");
       }
@@ -63,7 +63,7 @@ export default function Study() {
         </nav>
         <h2 className="text-left ml-5">Study: {deck.name}</h2>
       </div>
-{/* loads the front of a card, then toggles the flippedToFront variable when flipped is clicked, rendering the back. next  button increments to the next card. There is added functionality in next button click handler for flipping the card back to the front, as well as setting up a window to either return to start or redirect to home, when you reach the end of the deck. */}
+      {/* loads the front of a card, then toggles the flippedToFront variable when flipped is clicked, rendering the back. next  button increments to the next card. There is added functionality in next button click handler for flipping the card back to the front, as well as setting up a window to either return to start or redirect to home, when you reach the end of the deck. */}
       <div>
         {!flippedToFront ? (
           <div className="card ml-5 mr-5 ">
@@ -115,7 +115,7 @@ export default function Study() {
             </NavLink>
           </li>
           <li className="breadcrumb-item">
-          <NavLink to={`/decks/${deck.id}`}>{deck.name}</NavLink>
+            <NavLink to={`/decks/${deck.id}`}>{deck.name}</NavLink>
           </li>
           <li className="breadcrumb-item active" aria-current="page">
             Study

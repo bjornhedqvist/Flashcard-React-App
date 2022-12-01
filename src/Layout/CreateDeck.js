@@ -1,7 +1,12 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 
-export default function CreateDeck({ handleCreateDeckInputChange, submitCreateDeckFormHandler, cancelCreateDeckHandler, createDeckFormData }) {
+export default function CreateDeck({
+  handleCreateDeckInputChange,
+  submitCreateDeckFormHandler,
+  cancelCreateDeckHandler,
+  createDeckFormData,
+}) {
   return (
     <div>
       <nav aria-label="breadcrumb" className="ml-5 mr-5">
@@ -49,10 +54,7 @@ export default function CreateDeck({ handleCreateDeckInputChange, submitCreateDe
         >
           Cancel
         </button>
-        <button
-          type="submit"
-          className="btn btn-primary mb-2"
-        >
+        <button type="submit" className="btn btn-primary mb-2">
           Submit
         </button>
       </form>

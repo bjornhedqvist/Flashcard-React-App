@@ -1,10 +1,6 @@
 import React from "react";
 import { useState, useEffect } from "react";
-import {
-  useHistory,
-  useParams,
-  NavLink,
-} from "react-router-dom";
+import { useHistory, useParams, NavLink } from "react-router-dom";
 import { readCard, updateCard, readDeck } from "../utils/api";
 import CardFormComponent from "./CardFormComponent";
 
@@ -40,7 +36,7 @@ export default function EditCard() {
           front: `${thisCard.front}`,
           back: `${thisCard.back}`,
           id: `${thisCard.id}`,
-          deckId: Number(thisCard.deckId)
+          deckId: Number(thisCard.deckId),
         });
       } catch (error) {
         throw error;
@@ -94,6 +90,3 @@ export default function EditCard() {
     </div>
   );
 }
-
-//access a form component that is separate, and make it have props that will be empty that in edit will be filled with actual card info
-//use update card and make it just like update deck situation, and dont foget to give it an id for when it passes into updatecard

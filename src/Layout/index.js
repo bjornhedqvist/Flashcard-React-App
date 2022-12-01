@@ -1,10 +1,6 @@
 import React from "react";
 import { useState, useEffect } from "react";
-import {
-  Route,
-  Switch,
-  useHistory
-} from "react-router-dom";
+import { Route, Switch, useHistory } from "react-router-dom";
 import Header from "./Header";
 import NotFound from "./NotFound";
 import { listDecks, createDeck, deleteDeck } from "../utils/api";
@@ -105,12 +101,12 @@ function Layout() {
         <Route exact path="/decks/:deckId/edit">
           <EditDeck />
         </Route>
-          <Route exact path={`/decks/:deckId/cards/new`}>
-            <AddCard />
-          </Route>
+        <Route exact path={`/decks/:deckId/cards/new`}>
+          <AddCard />
+        </Route>
         <Route exact path={`/decks/:deckId/cards/:cardId/edit`}>
-            <EditCard />
-          </Route>
+          <EditCard />
+        </Route>
         <Route>
           <NotFound />
         </Route>

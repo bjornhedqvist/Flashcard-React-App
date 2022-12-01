@@ -1,10 +1,6 @@
 import React from "react";
 import { useState, useEffect } from "react";
-import {
-  useHistory,
-  NavLink,
-  useParams,
-} from "react-router-dom";
+import { useHistory, NavLink, useParams } from "react-router-dom";
 import { readDeck, updateDeck } from "../utils/api";
 
 export default function EditDeck() {

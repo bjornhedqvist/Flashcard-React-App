@@ -1,9 +1,5 @@
 import React from "react";
-import {
-  NavLink,
-  useHistory,
-  useRouteMatch,
-} from "react-router-dom";
+import { NavLink, useHistory, useRouteMatch } from "react-router-dom";
 import { deleteCard, readDeck } from "../utils/api";
 
 export default function ListCards({ deck, cardSet, setCardSet }) {

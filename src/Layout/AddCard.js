@@ -1,10 +1,6 @@
 import React from "react";
 import { useState, useEffect } from "react";
-import {
-  useHistory,
-  useRouteMatch,
-  NavLink,
-} from "react-router-dom";
+import { useHistory, useRouteMatch, NavLink } from "react-router-dom";
 import { createCard, readDeck } from "../utils/api";
 import CardFormComponent from "./CardFormComponent";
 
@@ -69,11 +65,12 @@ export default function AddCard() {
         </ol>
       </nav>
       <h2 className="text-left ml-5">{deck.name}: Add Card</h2>
-      <CardFormComponent submitCardFormHandler={submitCreateCardFormHandler} handleCardInputChange={handleCreateCardInputChange} cardFormData={createCardFormData} cancelCardHandler={cancelCreateCardHandler}/>
+      <CardFormComponent
+        submitCardFormHandler={submitCreateCardFormHandler}
+        handleCardInputChange={handleCreateCardInputChange}
+        cardFormData={createCardFormData}
+        cancelCardHandler={cancelCreateCardHandler}
+      />
     </div>
   );
 }
-
-//get deck with read deck, that deck should be the one with the id in the url above (useparams?)
-//access a form component that is separate, and make it have props that will be empty that in edit will be filled with actual card info
-//use createCard and mimic create deck

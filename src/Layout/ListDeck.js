@@ -2,7 +2,6 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 
 export default function ListDeck({ deleteDeckButtonHandler, decks }) {
-
   //maps a card with buttons for each deck from the array passed in as a prop
   return decks.map((deck, i) => {
     return (
@@ -14,9 +13,7 @@ export default function ListDeck({ deleteDeckButtonHandler, decks }) {
               {deck.cards.length} cards
             </small>
           </h5>
-          <p className="card-text">
-            {deck.description}
-          </p>
+          <p className="card-text">{deck.description}</p>
           <div className="d-flex align-items-center">
             <NavLink
               to={`/decks/${deck.id}`}
