@@ -1,6 +1,6 @@
 import React from "react";
 import { useState, useEffect } from "react";
-import { NavLink, useParams } from "react-router-dom";
+import { NavLink, useParams, useHistory } from "react-router-dom";
 import { readDeck } from "../utils/api";
 import ListCards from "./ListCards";
 
@@ -10,6 +10,7 @@ export default function ViewDeck({
   const { deckId } = useParams();
   const [deck, setDeck] = useState({});
   const [cardSet, setCardSet] = useState([]);
+  const {url, path} = useHistory()
 
   useEffect(() => {
     async function loadThisDeck() {
@@ -73,7 +74,7 @@ export default function ViewDeck({
                   Study
                 </NavLink>
                 <NavLink
-                  to={`/cards/new`}
+                  to={`/decks/${deck.id}/cards/new`}
                   key="add-cards-button"
                   role="button"
                   className="btn btn-primary mr-5"
