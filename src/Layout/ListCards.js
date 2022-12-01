@@ -8,11 +8,9 @@ import {
   useRouteMatch,
 } from "react-router-dom";
 import { deleteCard, readDeck } from "../utils/api";
-import { listDecks } from "../utils/api";
 
 export default function ListCards({ deck, cardSet, setCardSet }) {
   const { url, path } = useRouteMatch();
-  const [cards, setCards] = useState(cardSet);
   const history = useHistory();
 
   async function loadThisDeck() {
