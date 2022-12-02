@@ -128,7 +128,7 @@ export default function Study() {
         You need at least 3 cards to study. There are {cardSet.length} cards in
         this deck.
       </p>
-      <NavLink to={"/cards/new"} role="button" className="btn btn-primary ml-5">
+      <NavLink to={`/decks/${deck.id}/cards/new`} role="button" className="btn btn-primary ml-5">
         <span className="oi oi-plus mr-1"></span>
         Add Cards
       </NavLink>

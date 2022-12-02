@@ -40,11 +40,11 @@ export default function AddCard() {
     event.preventDefault();
     await createCard(params.deckId, createCardFormData);
     setCreateCardFormData({ ...initialCreateCardFormState });
-    history.push(`/decks/${params.deckId}`);
+    history.push(0);
   };
 
   const cancelCreateCardHandler = (event) => {
-    history.push("/");
+    history.push(`/decks/${params.deckId}`);
   };
 
   return (
@@ -65,7 +65,7 @@ export default function AddCard() {
         </ol>
       </nav>
       <h2 className="text-left ml-5">{deck.name}: Add Card</h2>
-      <CardFormComponent
+      <CardFormComponent buttonName={"Done"}
         submitCardFormHandler={submitCreateCardFormHandler}
         handleCardInputChange={handleCreateCardInputChange}
         cardFormData={createCardFormData}

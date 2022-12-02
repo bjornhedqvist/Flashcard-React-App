@@ -16,8 +16,8 @@
       "id": 3
     },
     {
-      "name": "edited!",
-      "description": "vibes",
+      "name": "THISUPDATE is number 3",
+      "description": "VIBE UPDATE #### 3",
       "id": 7
     },
     {
@@ -41,9 +41,9 @@
       "id": 13
     },
     {
-      "name": "lets gooo",
-      "description": "should be working perf now",
-      "id": 14
+      "name": "newest deck",
+      "description": "fefewf",
+      "id": 15
     }
   ],
   "cards": [
@@ -99,6 +99,78 @@
       "back": "erf",
       "deckId": 3,
       "id": 13
+    },
+    {
+      "front": "hh",
+      "back": "hrrtw",
+      "deckId": 7,
+      "id": 14
+    },
+    {
+      "front": "2",
+      "back": "22",
+      "deckId": 7,
+      "id": 15
+    },
+    {
+      "front": "4",
+      "back": "44",
+      "deckId": 7,
+      "id": 16
+    },
+    {
+      "front": "5",
+      "back": "5555",
+      "id": 17,
+      "deckId": 7
+    },
+    {
+      "front": "added card fix",
+      "back": "lest see if this fixes it",
+      "deckId": 2,
+      "id": 18
+    },
+    {
+      "front": "take to right screen",
+      "back": "does this work pls work",
+      "deckId": 7,
+      "id": 19
+    },
+    {
+      "front": "7",
+      "back": "77",
+      "deckId": 7,
+      "id": 20
+    },
+    {
+      "front": "8",
+      "back": "88",
+      "id": 21,
+      "deckId": 7
+    },
+    {
+      "front": "fix?",
+      "back": "pls work",
+      "deckId": 15,
+      "id": 22
+    },
+    {
+      "front": "vdffve",
+      "back": "erwfg",
+      "deckId": 15,
+      "id": 23
+    },
+    {
+      "front": "ewrfre",
+      "back": "frewf",
+      "deckId": 15,
+      "id": 24
+    },
+    {
+      "front": "rewferw",
+      "back": "rewf",
+      "deckId": 15,
+      "id": 25
     }
   ]
 }

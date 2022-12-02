@@ -1,6 +1,6 @@
 import React from "react";
 
-export default function CardFormComponent({
+export default function CardFormComponent({ buttonName,
   submitCardFormHandler,
   handleCardInputChange,
   cardFormData,
@@ -37,10 +37,10 @@ export default function CardFormComponent({
         className="btn btn-secondary mb-2 mr-2"
         onClick={cancelCardHandler}
       >
-        Cancel
+        {buttonName}
       </button>
       <button type="submit" className="btn btn-primary mb-2">
-        Submit
+        Save
       </button>
     </form>
   );

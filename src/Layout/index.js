@@ -68,6 +68,7 @@ function Layout() {
   };
 
   const cancelCreateDeckHandler = (event) => {
+    setCreateDeckFormData({...initialCreateDeckFormState})
     history.push("/");
   };
 
@@ -100,7 +101,7 @@ function Layout() {
           <Study />
         </Route>
         <Route exact path="/decks/:deckId/edit">
-          <EditDeck />
+          <EditDeck setDecks={setDecks}/>
         </Route>
         <Route exact path={`/decks/:deckId/cards/new`}>
           <AddCard />

@@ -1,9 +1,9 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import { useHistory, NavLink, useParams } from "react-router-dom";
-import { readDeck, updateDeck } from "../utils/api";
+import { listDecks, readDeck, updateDeck } from "../utils/api";
 
-export default function EditDeck() {
+export default function EditDeck({setDecks}) {
   const { deckId } = useParams();
   const [deck, setDeck] = useState({});
   const history = useHistory();
@@ -30,7 +30,7 @@ export default function EditDeck() {
       }
     }
     loadThisDeck();
-  }, [deckId, setEditDeckFormData]);
+  }, [deckId, setEditDeckFormData, setDeck]);
 
   const handleEditDeckInputChange = ({ target }) => {
     setEditDeckFormData({
@@ -47,6 +47,7 @@ export default function EditDeck() {
     event.preventDefault();
     await updateDeck(editDeckFormData);
     setEditDeckFormData({ ...initialEditDeckFormState });
+    listDecks().then(setDecks)
     history.push(`/decks/${deckId}`);
   };
 

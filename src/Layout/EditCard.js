@@ -53,6 +53,7 @@ export default function EditCard() {
   };
 
   const cancelEditCardHandler = (event) => {
+    setEditCardFormData({...initialEditCardFormState})
     history.push(`/decks/${deckId}`);
   };
 
@@ -73,7 +74,7 @@ export default function EditCard() {
             </NavLink>
           </li>
           <li className="breadcrumb-item">
-            <NavLink to={`/decks/deck.id`}>{deck.name}</NavLink>
+            <NavLink to={`/decks/${deck.id}`}>{deck.name}</NavLink>
           </li>
           <li className="breadcrumb-item active" aria-current="page">
             Edit Card {cardId}
@@ -81,7 +82,7 @@ export default function EditCard() {
         </ol>
       </nav>
       <h2 className="text-left ml-5">Edit Card</h2>
-      <CardFormComponent
+      <CardFormComponent buttonName={"Cancel"}
         submitCardFormHandler={submitEditCardFormHandler}
         handleCardInputChange={handleEditCardInputChange}
         cardFormData={editCardFormData}
