@@ -62,6 +62,7 @@ function Layout() {
   const submitCreateDeckFormHandler = async (event) => {
     event.preventDefault();
     const createdDeck = await createDeck(createDeckFormData);
+    listDecks().then(setDecks)
     setCreateDeckFormData({ ...initialCreateDeckFormState });
     history.push(`/decks/${createdDeck.id}`);
   };
